@@ -12,7 +12,7 @@ export default function NavBar() {
 
     return (
         <>
-            <header className='h-[57px] bg-[#ebebeb] flex justify-between px-[20px]'>
+            <header className="h-[64px] bg-gray-500 flex justify-between px-[80px]">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -27,8 +27,7 @@ export default function NavBar() {
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
                 </svg>
-                {/* {show ? <Display options={options}/> : null} */} {/* if else */}
-                {show && <Display options={options} />} {/* if */}
+                {show && <Display options={options} />}
                 <div className="w-full flex justify-between items-center bg-gray-500">
                     <img src="./img/logo.jpg" alt="logo"/>
                     <Label options={options} />

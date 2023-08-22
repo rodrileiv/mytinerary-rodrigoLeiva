@@ -29,7 +29,7 @@ export default function NavBar() {
                 </svg>
                 {show && <Display options={options} />}
                 <div className="w-full flex justify-between items-center bg-gray-500">
-                    <img src="./img/logo.jpg" alt="logo"/>
+                    <img src="../img/logo.jpg" alt="logo"/>
                     <Label options={options} />
                 </div>
             </header>

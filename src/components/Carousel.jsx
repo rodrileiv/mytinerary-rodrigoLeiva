@@ -1,63 +1,124 @@
-import { useState,useEffect } from "react";
-import axios from "axios";
-import Card2 from "../components/Card2"
-export default function Carousel() {
-    const [indiceInicial, setIndiceInicial] = useState(0);
-    const [indiceFinal, setIndiceFinal] = useState(4);
-    const [data,setData] = useState([])
+import React, { useState, useEffect } from 'react'
 
-    function next(){
-        if(indiceFinal >= data.length){
-            setIndiceInicial(0);
-            setIndiceFinal(4)
+const Carousel = () => {
+    let [index,setIndex]=useState(0);
+
+    const images1=[
+        {
+            name:'Cancun',
+            src:'/img/america/cancun.jpg',
+        },
+        {
+            name:'Cartagena',
+            src:'/img/america/cartagena.jpg',
+        },
+        {
+            name:'Ushuaia',
+            src:'/img/america/ushuaia.jpg',
         }
-        else{
-            setIndiceInicial(indiceInicial+4);
-            setIndiceFinal(indiceFinal+4)
+    ]
+    const images2=[
+        {
+            name:'Bangkok',
+            src:'/img/asia/bangkok.jpg',
+        },
+        {
+            name:'Pekin',
+            src:'/img/asia/pekin.jpg',
+        },
+        {
+            name:'Tokio',
+            src:'/img/asia/tokio.jpg',
         }
+    ]
+    const images3=[
+        {
+            name:'Rome',
+            src:'/img/europe/roma.jpg',
+        },
+        {
+            name:'Rio Do Janeiro',
+            src:'/img/america/rioDeJaneiro.jpg',
+        },
+        {
+            name:'London',
+            src:'/img/europe/london.jpg',
+        }
+    ]
+    const images4=[
+        {
+            name:'Sidney',
+            src:'/img/oceania/sidney.jpg'
+        },
+        {
+            name:'Paris',
+            src:'/img/europe/paris.jpg'
+        },
+        {
+            name:'Suva',
+            src:'/img/oceania/suva.jpg'
+        }
+    ]
+
+    const handlePrev=()=>{
+        if (index>0){
+            setIndex(index-1)
+        }
+        if (index==0){
+            setIndex(2)
+        }
+    }
+
+    const handleNext=()=>{
+        if (index<2){
+            setIndex(index+1)
+        }
+        if (index==2){
+            setIndex(0)
+        }
+    }
+
+    const autoSlide = () => {
+        handleNext();
     };
 
-    function prev(){
-        if(indiceInicial == 0){
-            setIndiceInicial(data.length-4);
-            setIndiceFinal(data.length)
-        }
-        else{
-            setIndiceInicial(indiceInicial-4);
-            setIndiceFinal(indiceFinal-4) 
-        }
-    };
+    useEffect(() => {
+        const interval = setInterval(autoSlide, 5000);
 
-    useEffect(
-        ()=>{
-            axios('/data.json')
-                .then(res=>setData(res.data))
-                .catch(err=>console.log(err))
-        },[]             
-    );
-  
+        return () => {
+            clearInterval(interval);
+        };
+    }, [index]);
+
     return (
-        <div className="flex flex-col w-[400px] justify-center">
-            <p className="text-[20px] flex justify-center font-bold">Popular Mytineraries</p>
-            <div className="flex">
-                <button type="button" onClick={prev} className="flex items-center justify-center cursor-pointer group focus:outline-none">
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg className="w-4 h-4 text-black dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                        </svg>
-                    </span>
-                </button>
-                <div className="flex flex-wrap justify-center ">
-                    {data.slice(indiceInicial, indiceFinal).map((each, index) => <Card2 key={index} src={each.photo} alt={each.id} text={each.city} />)}
+        <div id="carouselExample" className="carousel slide carusel">
+            <h2 className='text-center font-bold'>My Tineraries</h2>
+            <div className='d-flex'>
+                <button onClick={handlePrev} className="boton carousel-control-prev-icon align-self-center"></button>
+                <div className="carousel-inner">
+                    <div className="carousel-item active d-flex justify-content-center flex-wrap">
+                        <div className="city-info text-center">
+                            <h3>{images1[index].name}</h3>
+                            <img src={images1[index].src} alt="" className='city rounded' />
+                        </div>
+                        <div className="city-info text-center">
+                            <h3>{images2[index].name}</h3>
+                            <img src={images2[index].src} alt="" className='city rounded' />
+                        </div>
+                        <div className="city-info text-center">
+                            <h3>{images3[index].name}</h3>
+                            <img src={images3[index].src} alt="" className='city rounded' />
+                        </div>
+                        <div className="city-info text-center">
+                            <h3>{images4[index].name}</h3>
+                            <img src={images4[index].src} alt="" className='city rounded' />
+                        </div>
+                    </div>
                 </div>
-                <button type="button" onClick={next} className="flex items-center justify-center cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg className="w-4 h-4 text-black dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
-                        </svg>
-                    </span>
-                </button>
+                <button onClick={handleNext} className="boton carousel-control-next-icon align-self-center"></button>
             </div>
         </div>
-  )
+    )
 }
+
+export default Carousel

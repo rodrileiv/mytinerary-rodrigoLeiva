@@ -3,13 +3,13 @@ export default function Footer() {
       <footer className="h-[80px] bg-gray-500 flex flex-col px-[20px]  
       md:justify-between md:flex-row md:h-[49px] md:items-center md:mb-2">
       <div className="flex justify-center">
-        <span class="text-md dark:text-gray-400 hidden sm:flex">© 2023 My Tinerary.</span>
+        <span className="text-md dark:text-gray-400 hidden sm:flex">© 2023 My Tinerary.</span>
       </div>
       <div className="flex flex-row justify-center p-2 gap-4">
           <a href="#!" role="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 w-7"
+              className="h-7 w-7"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path
@@ -20,7 +20,7 @@ export default function Footer() {
           <a href="#!" role="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 w-7"
+              className="h-7 w-7"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path
@@ -31,7 +31,7 @@ export default function Footer() {
           <a href="#!" role="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 w-7"
+              className="h-7 w-7"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path

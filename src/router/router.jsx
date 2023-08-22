@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
-import Home from '../pages/Home'
+import {createBrowserRouter} from 'react-router-dom'
+import Home from '../pages/Home.jsx'
 import MainLayout from "../layouts/MainLayout";
-import Cities from "../pages/Cities";
-
+import Cities from '../pages/Cities.jsx'
+import CityDetail from '../pages/CityDetail.jsx'
 
 const router = createBrowserRouter([
     {
@@ -14,13 +14,17 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
+                path: '/cities',
+                element: <Cities />
+            },
+            {
+                path: '/cities:id',
+                element: <CityDetail />
+            },
+            {
                 path: '*',
                 element: <h1 className="text-3xl">Not Found Page</h1>
             },
-            {
-                path: '/',
-                element: <Cities />
-            }
         ]
     }
 ]);

@@ -3,6 +3,7 @@ import Home from '../pages/Home.jsx'
 import MainLayout from "../layouts/MainLayout";
 import Cities from '../pages/Cities.jsx'
 import CityDetail from '../pages/CityDetail.jsx'
+import SignIn from '../pages/SignIn.jsx';
 
 const router = createBrowserRouter([
     {
@@ -11,22 +12,26 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Home/>
             },
             {
                 path: '/cities',
-                element: <Cities />
+                element: <Cities/>
             },
             {
-                path: '/cities:id',
-                element: <CityDetail />
+                path: '/signin',
+                element: <SignIn/>
             },
             {
                 path: '*',
                 element: <h1 className="text-3xl">Not Found Page</h1>
             },
-        ]
-    }
+        ],
+    },
+    {
+        path: '/cities/:id',
+        element: <CityDetail/>
+    },
 ]);
 
 export default router;

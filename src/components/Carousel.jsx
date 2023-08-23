@@ -91,31 +91,31 @@ const Carousel = () => {
     }, [index]);
 
     return (
-        <div id="carouselExample" className="carousel slide carusel">
-            <h2 className='text-center font-bold'>My Tineraries</h2>
-            <div className='d-flex'>
-                <button onClick={handlePrev} className="boton carousel-control-prev-icon align-self-center"></button>
+        <div id="carouselExample" className="carousel slide">
+            <h2 className='text-center font-bold text-4xl'>My Tineraries</h2>
+            <div className='flex'>
+                <button className="text center font-bold justify-content-center text-3xl" onClick={handlePrev}><img src="https://cdn-icons-png.flaticon.com/128/54/54623.png" alt="Left" /></button>
                 <div className="carousel-inner">
-                    <div className="carousel-item active d-flex justify-content-center flex-wrap">
-                        <div className="city-info text-center">
+                    <div className="flex flex-wrap justify-center">
+                        <div className="city-info text-center p-4 m-4">
                             <h3>{images1[index].name}</h3>
-                            <img src={images1[index].src} alt="" className='city rounded' />
+                            <img src={images1[index].src} alt="" className='city rounded w-80' />
                         </div>
-                        <div className="city-info text-center">
+                        <div className="city-info text-center p-4 m-4">
                             <h3>{images2[index].name}</h3>
-                            <img src={images2[index].src} alt="" className='city rounded' />
+                            <img src={images2[index].src} alt="" className='city rounded w-80' />
                         </div>
-                        <div className="city-info text-center">
+                        <div className="city-info text-center p-4 m-4">
                             <h3>{images3[index].name}</h3>
-                            <img src={images3[index].src} alt="" className='city rounded' />
+                            <img src={images3[index].src} alt="" className='city rounded w-80' />
                         </div>
-                        <div className="city-info text-center">
+                        <div className="city-info text-center p-4 m-4">
                             <h3>{images4[index].name}</h3>
-                            <img src={images4[index].src} alt="" className='city rounded' />
+                            <img src={images4[index].src} alt="" className='city rounded w-80' />
                         </div>
                     </div>
                 </div>
-                <button onClick={handleNext} className="boton carousel-control-next-icon align-self-center"></button>
+                <button className="text-center font-bold justify-center text-3xl" onClick={handleNext}><img src="https://cdn-icons-png.flaticon.com/128/54/54240.png" alt="Right" /></button>
             </div>
         </div>
     )

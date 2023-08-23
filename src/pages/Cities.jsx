@@ -37,7 +37,7 @@ const Cities = () => {
                     <div>
                         <button
                             type="submit"
-                            className='flex items-center justify-center w-8 h-8 text-white rounded-r-lg bg-gradient-to-r from-purple-500 bg-purple-400 hover:shadow-2xl hover:bg-purple-700 hover:from-purple-700'>
+                            className='flex items-center justify-center w-8 h-8'> <img src="https://cdn-icons-png.flaticon.com/512/3721/3721746.png" alt="Search" />
                         </button>
                     </div>
                 </div>
@@ -57,4 +57,4 @@ const Cities = () => {
     )
 }
 
-export default Cities
+export default Cities;

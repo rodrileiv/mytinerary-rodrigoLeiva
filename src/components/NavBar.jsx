@@ -6,8 +6,8 @@ export default function NavBar() {
     let [show,setShow] = useState(false)
     let options = [
         {to: "/", title: "Home"},
-        {to: "/pages/cities", title: "Cities"},
-        {to: "/pages/signin", title: "Log In", backgroundColor: "#4F46E5", color: "white"}
+        {to: "cities", title: "Cities"},
+        {to: "signIn", title: "Sign In", backgroundColor: "#4F46E5", color: "white"}
     ]
 
     return (

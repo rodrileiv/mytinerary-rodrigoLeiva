@@ -1,9 +1,14 @@
+import NavBarFooter from "./NavBarFooter"
+
 export default function Footer() {
     return (
       <footer className="h-[80px] bg-gray-500 flex flex-col px-[20px]  
-      md:justify-between md:flex-row md:h-[49px] md:items-center md:mb-2">
+      md:justify-between md:flex-row md:h-[49px] md:items-center md:mb-2 mt-auto">
       <div className="flex justify-center">
         <span className="text-md dark:text-gray-400 hidden sm:flex">© 2023 My Tinerary.</span>
+      </div>
+      <div className="flex justify-center">
+        <NavBarFooter />
       </div>
       <div className="flex flex-row justify-center p-2 gap-4">
           <a href="#!" role="button">

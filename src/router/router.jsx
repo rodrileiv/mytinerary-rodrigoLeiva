@@ -23,14 +23,14 @@ const router = createBrowserRouter([
                 element: <SignIn/>
             },
             {
+                path: '/cities/:_id',
+                element: <CityDetail/>
+            },
+            {
                 path: '*',
                 element: <h1 className="text-3xl">Not Found Page</h1>
             },
         ],
-    },
-    {
-        path: '/cities/:_id',
-        element: <CityDetail/>
     },
 ]);
 

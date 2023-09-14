@@ -19,7 +19,6 @@ function Itinerary({ title, name, photo, duration, likes, price, hashtags, comme
                     </div>
                     <div className='flex flex-col place-items-center text-white my-4 w-1/4'>
                         <span className='flex flex-row gap-1 align-middle font-semibold'>{likes} <AiFillLike/></span>
-
                         <div className='flex flex-wrap gap-x-3 text-justify'>
                                 <p>
                                     {hashtags}

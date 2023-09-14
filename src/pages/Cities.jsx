@@ -52,7 +52,7 @@ const Cities = () => {
                 {
                     cities?.length > 0
                     ? cities?.map((city) => (
-                            <Card2 key={city._id} _id={city._id} name={city.name} image={city.image} continent={city.continent}/>
+                            <Card2 key={city._id} _id={city._id} name={city.name} image={city.image}/>
                     )).slice(0, 15)
                     : <NotFoundPage />
                 }

@@ -1,50 +1,48 @@
-import {createReducer} from "@reduxjs/toolkit";
-import {userSignUp, userSignIn, logInWithToken, userLogOut} from "../actions/userActions.js";
-import localStorageFn from "../../../utils/localStorage.js";
+import { createReducer } from "@reduxjs/toolkit";
+import {
+  user_login,
+  user_token,
+  userSignupLoading,
+  userSignupSuccess,
+  userSignupFailure,
+} from '../actions/userActions';
 
 const initialState = {
-  user: {},
-  token: "",
-  isOnline: false,
+  user: null,
+  token: null,
+  loading: false,
+  error: null,
 };
 
-const userReducers = createReducer(initialState, (builder) => {
+const userReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(userSignUp.fulfilled, (store, action) => {
-      localStorageFn.set("token", action.payload.token);
-      return {
-        ...store,
-        user: action.payload.response,
-        token: action.payload.token,
-        isOnline: true,
-      };
+    .addCase(user_login.pending, (state) => {
+      state.loading = true;
+      state.error = null;
     })
-    .addCase(userSignIn.fulfilled, (store, action) => {
-      localStorageFn.set("token", action.payload.token);
-      return {
-        ...store,
-        user: action.payload.response,
-        token: action.payload.token,
-        isOnline: true,
-      };
+    .addCase(user_login.fulfilled, (state, action) => {
+      state.loading = false;
+      state.user = action.payload.user;
+      state.token = action.payload.token;
     })
-    .addCase(logInWithToken.fulfilled, (store, action) => {
-      return {
-        ...store,
-        user: action.payload.response,
-        token: action.payload.token,
-        isOnline: true,
-      };
+    .addCase(user_login.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload.error;
     })
-    .addCase(userLogOut, (store) => {
-      localStorageFn.remove("token");
-      return {
-        ...store,
-        user: {},
-        token: "",
-        isOnline: false,
-      };
+    .addCase(user_token, (state, action) => {
+      state.user = action.payload.user;
+    })
+    .addCase(userSignupLoading, (state) => {
+      state.loading = true;
+      state.error = null;
+    })
+    .addCase(userSignupSuccess, (state) => {
+      state.loading = false;
+    })
+    .addCase(userSignupFailure, (state, action) => {
+      state.loading = false;
+      state.error = action.payload.error;
     });
 });
 
-export default userReducers
+export default userReducer;

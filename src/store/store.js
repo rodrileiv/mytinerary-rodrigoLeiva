@@ -5,7 +5,7 @@ import userReducers from "./reducers/userReducers";
 
 export const store = configureStore({
     reducer:{
-        userReducers: userReducers,
+        userReducer: userReducers,
         cityReducer: cityReducer,
         itineraryReducer: itineraryReducer
     }

@@ -1,21 +1,12 @@
-import {useEffect, useState} from "react";
-import {Navigate} from "react-router-dom";
-import {useSelector} from "react-redux";
-import MainLayout from "../layouts/MainLayout";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = () => {
-  const selector = useSelector((store) => store.userReducers.isOnline);
-  const [isAuth, setIsAuth] = useState(true);
+const ProtectedRoute = ({children, path}) => {
+    let user = useSelector(store => store.userReducer.user);
 
-  useEffect(() => {
-    setIsAuth(selector);
-  }, []);
+    if(user) return <Navigate to={path}/>;
 
-  return (
-    <>
-      {isAuth ? <MainLayout /> : <Navigate to="/signin" />}
-    </>
-  )
-};
+    return children
+}
 
-export default ProtectedRoute;
+export default ProtectedRoute
